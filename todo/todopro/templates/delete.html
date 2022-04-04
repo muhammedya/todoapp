@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+            <div class="card border-dark mb-3 shadow" style="width: 33.3%; margin: 100px; 100px; 30px; 100px;">
+                <div class="card-header"><strong>Delete task. </strong></div>
+                <div class="card-body text-dark">
+                    <form method="POST">
+                        {% csrf_token %}
+                    <p class="card-title">Are you sure this task is Done?</p>
+                        <input type="submit" class="btn btn-success">
+                    </form>
+                    {% endblock %}
+                </div>
+            </div>

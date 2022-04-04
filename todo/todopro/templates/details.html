@@ -1,0 +1,12 @@
+    {% extends 'base.html' %}
+    {% block content %}
+        <div class="card border-warning mb-6 shadow" style="max-width: 35rem;">
+          <div class="card-header">{{i.date}}</div>
+          <div class="card-body">
+            <h5 class="card-title">{{i.name}}.</h5>
+            <p class="card-text">{{i.priority}}.</p>
+            <a class="btn btn-danger" href="{% url 'delete' i.id %}">Done</a>
+            <a class="btn btn-warning" href="{% url 'update' i.id %}">Update</a>
+          </div>
+        </div><br>
+    {% endblock %}

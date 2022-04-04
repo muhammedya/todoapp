@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+<!--Boostrap start-->
+<div class="container">
+  <div class="row">
+    <!--Banner start-->
+    <div class="col-12">
+        <!--Banner Text and boarder start-->
+        <div class="banner">
+            <div class="banner-text text-center">
+                To Do App
+            </div>
+        </div>
+        <!--Banner Text and boarder End-->
+    </div>
+    <!--Banner End-->
+    <div class="col-6">
+        <!--Form contents start-->
+        <h4>Enter your task:</h4>
+        <form method="POST" class="mb-3 shadow">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="text" class="form-control" name="task" placeholder="Enter your Task?">
+        </div>
+        <div class="form-grou">
+            <input type="text" class="form-control" name="priority" placeholder="Enter your Priority">
+            <input type="date" class="form-control" name="date" placeholder="Enter your Date">
+            <input type="submit" class="btn btn-success"><br>
+        </div>
+        </form>
+        <!--Form contents start-->
+    </div>
+
+    <div class="col-6">
+        <h4>Task tobe completed.</h4>
+        {% for i in task %}
+        <!--Card contents start-->
+        <div class="card border-warning mb-6 shadow" style="width: 100%">
+          <div class="card-header">{{i.date}}</div>
+          <div class="card-body">
+            <h5 class="card-title">{{i.name}}.</h5>
+            <p class="card-text">{{i.priority}}.</p>
+            <a class="btn btn-danger" href="{% url 'delete' i.id %}">Done</a>
+            <a class="btn btn-warning" href="{% url 'update' i.id %}">Update</a>
+          </div>
+        </div><br>
+        <!--Card contents end-->
+        {% endfor %}
+        {% endblock %}
+    </div>
+  </div>
+</div>
+<!--Boostrap end-->
